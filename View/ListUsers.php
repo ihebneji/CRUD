@@ -121,8 +121,10 @@ $users = $userController->getUsers();
                         <td><?php echo htmlspecialchars($user['email']); ?></td>
                         <td><?php echo htmlspecialchars($user['pwd']); ?></td>
                         <td>
-                            <a  class="btn btn-delete">Supprimer</a>
-                            <a  class="btn btn-update">Modifier</a>
+                        <a href="deleteuser.php?id=<?php echo $user['id']; ?>" class="btn btn-delete" onclick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');">Supprimer</a>
+
+                        <a href="updateuser.php?id=<?php echo $user['id']; ?>" class="btn btn-update">Modifier</a>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -131,3 +133,4 @@ $users = $userController->getUsers();
     </div>
 </body>
 </html>
+

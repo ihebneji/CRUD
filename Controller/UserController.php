@@ -61,9 +61,23 @@ function deleteUser($id) {
       die('Erreur: ' . $e->getMessage());
   }
 }
+public function getUserById($id) {
+  $db = config::getConnexion();
+  $sql = "SELECT * FROM user WHERE id = :id";
+  
+  try {
+      $query = $db->prepare($sql);
+      $query->execute(['id' => $id]);
+      return $query->fetch(PDO::FETCH_ASSOC); // Récupérer les données sous forme de tableau associatif
+  } catch (Exception $e) {
+      die('Erreur: ' . $e->getMessage());
+  }
+}
 
 
 }
+
+
 
 
 
